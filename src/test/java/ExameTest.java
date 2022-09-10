@@ -8,9 +8,9 @@ public class ExameTest {
     @Test
     public void quandoVerificarTriglicerides_deveLancarExcecao() {
         try {
-            Exame exameTriglicerides = new Exame();
-            exameTriglicerides.setTriglicerides(0);
-            exameTriglicerides.verificarNivelTriglicerides();
+            Exame exame = new Exame();
+            exame.setTriglicerides(0);
+            exame.verificarNivelTriglicerides();
             fail();
         } catch (IllegalArgumentException e) {
             assertEquals("Não foi possível verificar o nível de Triglicerides.", e.getMessage());
@@ -19,34 +19,69 @@ public class ExameTest {
 
     @Test
     public void quandoVerificarTriglicerides_deveRetornarNivelDesejavel() {
-        Exame exameTriglicerides = new Exame();
-        exameTriglicerides.setTriglicerides(149);
+        Exame exame = new Exame();
+        exame.setTriglicerides(149);
 
-        assertEquals("Nível desejável", exameTriglicerides.verificarNivelTriglicerides());
+        assertEquals("Nível desejável", exame.verificarNivelTriglicerides());
     }
 
     @Test
     public void quandoVerificarTriglicerides_deveRetornarNivelLimitrofe() {
-        Exame exameTriglicerides = new Exame();
-        exameTriglicerides.setTriglicerides(199);
+        Exame exame = new Exame();
+        exame.setTriglicerides(199);
 
-        assertEquals("Nível limitrofe", exameTriglicerides.verificarNivelTriglicerides());
+        assertEquals("Nível limitrofe", exame.verificarNivelTriglicerides());
     }
 
     @Test
     public void quandoVerificarTriglicerides_deveRetornarNivelAlto() {
-        Exame exameTriglicerides = new Exame();
-        exameTriglicerides.setTriglicerides(499);
+        Exame exame = new Exame();
+        exame.setTriglicerides(499);
 
-        assertEquals("Nível alto", exameTriglicerides.verificarNivelTriglicerides());
+        assertEquals("Nível alto", exame.verificarNivelTriglicerides());
     }
 
     @Test
     public void quandoVerificarTriglicerides_deveRetornarNivelMuitoAlto() {
-        Exame exameTriglicerides = new Exame();
-        exameTriglicerides.setTriglicerides(500);
+        Exame exame = new Exame();
+        exame.setTriglicerides(500);
 
-        assertEquals("Nível muito alto", exameTriglicerides.verificarNivelTriglicerides());
+        assertEquals("Nível muito alto", exame.verificarNivelTriglicerides());
     }
 
+    @Test
+    public void quandoVerificarColesterolTotal_deveLancarExcecao() {
+        try {
+            Exame exame = new Exame();
+            exame.setColesterolTotal(0);
+            exame.verificarNivelColesterolTotal();
+            fail();
+        } catch (IllegalArgumentException e) {
+            assertEquals("Não foi possível verificar o nível de Colesterol Total.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void quandoVerificarColesterolTotal_deveRetornarDesejavel() {
+        Exame exame = new Exame();
+        exame.setColesterolTotal(199);
+
+        assertEquals("Desejável", exame.verificarNivelColesterolTotal());
+    }
+
+    @Test
+    public void quandoVerificarColesterolTotal_deveRetornarLimitrofe() {
+        Exame exame = new Exame();
+        exame.setColesterolTotal(239);
+
+        assertEquals("Limítrofe", exame.verificarNivelColesterolTotal());
+    }
+
+    @Test
+    public void quandoVerificarColesterolTotal_deveRetornarElevado() {
+        Exame exame = new Exame();
+        exame.setColesterolTotal(240);
+
+        assertEquals("Elevado", exame.verificarNivelColesterolTotal());
+    }
 }
